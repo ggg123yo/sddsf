@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c5f1ff;
+  overflow: hidden; /* 잔상이 화면을 넘어가지 않도록 설정 */
+}
+
+#lottie-container {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw; /* 뷰포트 너비 */
+  height: 80vh; /* 뷰포트 높이 */
+  max-width: 700px; /* 최대 크기 제한 */
+  max-height: 700px; /* 최대 크기 제한 */
+  filter: url(#edge-blur) url(#full-blur); /* 가장자리 블러와 전체 블러 결합 */
+  z-index: 0;
+}
+
+
+
+.trail {
+  position: absolute;
+  width: 40px; /* 기본 크기를 40px로 설정 */
+  height: 40px; /* 기본 크기를 40px로 설정 */
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: fadeOut 1s ease-out forwards;
+  z-index: 3; /* 잔상 효과 계층 */
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* 초기 크기 */
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(3); /* 크기를 3배로 확장 */
+  }
+}
+
